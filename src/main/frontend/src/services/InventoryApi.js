@@ -7,7 +7,6 @@ const headers = { "Content-Type": "application/json" }
 export const inventoryService = {
 
   fetchProducts:  async () => {
-    console.log("fetching")
     headers['Authorization'] = 'Basic ' + btoa(`${username}:${password}`)
     try {
       const resp = await fetch(BASEURL, {headers: headers})
