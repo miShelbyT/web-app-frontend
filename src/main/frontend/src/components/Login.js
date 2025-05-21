@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { userService } from '../services/UserApi.js'
 import { useAuth } from './AuthContext'
 
-function Login({ updateReady }) {
+function Login({updateReady}) {
     
   const BASE_URL = `${process.env.REACT_APP_API_URL}`
   
@@ -46,7 +46,6 @@ function Login({ updateReady }) {
       setSubmitted(true)
       login(resp, user.password)
       updateReady()
-      
     } else {
       setErr("Email and password are not a match.")
     }

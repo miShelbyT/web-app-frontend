@@ -23,6 +23,7 @@ function App() {
     try {
       getInventory()
     } catch (e) { console.log(e) }
+    // eslint-disable-next-line
   }, [ready])
 
   function updateReady(){
