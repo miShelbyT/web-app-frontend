@@ -13,7 +13,7 @@ function CreateAccount() {
 
   const [user, setUser] = useState({
     name: '',
-    title: '',
+    title: isManager ? "Manager" : "Sales Associate",
     email: '',
     password: '',
     passwordConfirm: '',
@@ -29,9 +29,11 @@ function CreateAccount() {
   function handleClick(e){
     if(e.target.checked) {
       setIsManager(true)
+      setUser(prev => ({...prev, title: "Manager"}))
       setUrl(BASE_URL + "/managers_new")
     } else {
       setIsManager(false)
+      setUser(prev => ({...prev, title: "Sales Associate"}))
       setUrl(BASE_URL + "/users_new")
     }
   }

@@ -16,11 +16,13 @@ export const AuthProvider = ({children}) => {
 
   const login = (response, password)=> {
     setIsAuthenticated(true)
+    console.log(response)
     localStorage.setItem("isAuthenticated", "true")
     localStorage.setItem("email", response.email)
     localStorage.setItem("password", password)
     localStorage.setItem("id", response.id)
     localStorage.setItem("isAdmin", response.isAdmin)
+    localStorage.setItem("token", response.token)
 
     setCurrentUser(response)
   }
@@ -32,6 +34,7 @@ export const AuthProvider = ({children}) => {
     localStorage.removeItem("password")
     localStorage.removeItem("id")
     localStorage.removeItem("isAdmin")
+    localStorage.removeItem("token")
     setCurrentUser({})
   }
 

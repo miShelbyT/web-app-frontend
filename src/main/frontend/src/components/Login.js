@@ -38,10 +38,7 @@ function Login({updateReady}) {
     const apiResp = await userService.getOrCreateUser(url, user)
     if (apiResp.status === 200) {
       const resp = await apiResp.json()
-      setUser({
-    email: '',
-    password: ''
-      })
+      setUser({ email: '', password: '' })
       setErr("")
       setSubmitted(true)
       login(resp, user.password)

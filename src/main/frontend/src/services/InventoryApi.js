@@ -1,13 +1,13 @@
 const BASEURL = `${process.env.REACT_APP_API_URL}/inventory_items`;
-const username = localStorage.getItem("email");
-const password =  localStorage.getItem("password");
 
-const headers = { "Content-Type": "application/json" }
+const headers = { "Content-Type": "application/json" };
+let token = localStorage.getItem('token') || "";
 
 export const inventoryService = {
 
   fetchProducts:  async () => {
-    headers['Authorization'] = 'Basic ' + btoa(`${username}:${password}`)
+    token = localStorage.getItem('token')
+    headers['Authorization'] = `Bearer ${token}`
     try {
       const resp = await fetch(BASEURL, {headers: headers})
       if(resp.ok) {
@@ -17,7 +17,8 @@ export const inventoryService = {
   },
 
   addProduct: async (inventoryItem)=> {
-    headers['Authorization'] = 'Basic ' + btoa(`${username}:${password}`)
+    token = localStorage.getItem('token')
+    headers['Authorization'] = `Bearer ${token}`
     try {
       const resp = await fetch(BASEURL, {
         method: "POST",
@@ -30,7 +31,7 @@ export const inventoryService = {
     } catch(err) { console.error(err) }
   },
   updateProduct: async (inventoryItem)=> {
-    headers['Authorization'] = 'Basic ' + btoa(`${username}:${password}`)
+    headers['Authorization'] = `Bearer ${token}`
     try {
       const resp = await fetch(`${BASEURL}/${inventoryItem.id}`, {
         method: "PUT",
@@ -44,7 +45,7 @@ export const inventoryService = {
     } catch(err) { console.error(err) }
   },
   deleteProduct: async (id) => {
-    headers['Authorization'] = 'Basic ' + btoa(`${username}:${password}`)
+    headers['Authorization'] = `Bearer ${token}`
     try {
       const res = await fetch(`${BASEURL}/${id}`, { method: "DELETE", headers: headers })
       return res.status
