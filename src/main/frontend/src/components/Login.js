@@ -36,7 +36,8 @@ function Login({updateReady}) {
     localStorage.setItem("email", user.email)
     localStorage.setItem("password", user.password)
     const apiResp = await userService.getOrCreateUser(url, user)
-    if (apiResp.status === 200) {
+    // switching apiResp.status == 200 to apiResp.ok which it should have been before?
+    if (apiResp.ok) {
       const resp = await apiResp.json()
       setUser({ email: '', password: '' })
       setErr("")
