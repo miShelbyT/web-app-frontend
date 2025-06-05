@@ -8,6 +8,8 @@ Upon login, the admin/manager user has full CRUD functionality for the inventory
 
 ...MORE INFORMATION TO COME...
 
+*Note: this application  was initially created as a monorepo on my Gitlab account. Gitlab permissions made it difficult to untangle the application so with a little help from a kind [friend](https://github.com/yibbidy) we got this decoupled so I could continue getting my front-end and back-end repos deployed separately.*
+
 
 
 ## Getting Started with Create React App
