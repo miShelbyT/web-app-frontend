@@ -3,19 +3,19 @@ Inventory Management App was created as my capstone project/culmination of my BS
 
 Upon login, the general user can view the current inventory of the store, and can filter, run and print reports. (Print functionality is via the npm package: [react-to-print](https://www.npmjs.com/package/react-to-print).)
 
-<p align="center" width="100%">
-    <img width="65%" src="src/main/frontend/src/resources/print_report.png" alt="screenshot of inventory report"> 
+<p style="text-align: center; width: 100%;">
+    <img style="width: 65%;" src="src/main/frontend/src/resources/print_report.png" alt="screenshot of inventory report"> 
 </p>
 
 Upon login, the admin/manager user has full CRUD permissions for the inventory, including price and other status changes, as well as reducing inventory items and/or purchasing additional items.
 
 
-<p align="center" width="100%">
-    <img width="65%" src="src/main/frontend/src/resources/login_page.png" alt="screenshot of login page"> 
+<p style="text-align: center; width: 100%;">
+    <img style="width: 65%;" src="src/main/frontend/src/resources/login_page.png" alt="screenshot of login page"> 
 </p>
 
-<p align="center" width="100%">
-    <img width="65%" src="src/main/frontend/src/resources/list_view.png" alt="screenshot of inventory list view"> 
+<p style="text-align: center; width: 100%;">
+    <img style="width: 65%;" src="src/main/frontend/src/resources/list_view.png" alt="screenshot of inventory list view"> 
 </p>
 
 The deployed application uses https protocol and JWT for authentication and session management. More information about the Spring Boot application can be found [here](https://github.com/miShelbyT/springboot-web-app).
