@@ -18,7 +18,7 @@ Upon login, the admin/manager user has full CRUD permissions for the inventory, 
     <img width="65%" src="src/main/frontend/src/resources/list_view.png" alt="screenshot of inventory list view"> 
 </p>
 
-The deployed application uses https protocol and JWT tokens for authentication and session management. More information about the Spring Boot application can be found [here](https://github.com/miShelbyT/springboot-web-app).
+The deployed application uses https protocol and JWT for authentication and session management. More information about the Spring Boot application can be found [here](https://github.com/miShelbyT/springboot-web-app).
 
 Deploy link available upon request - AWS invoices can add up!
 
