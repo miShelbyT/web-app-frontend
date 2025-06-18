@@ -7,6 +7,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({children}) => {
 
   const [currentItem, setCurrentItem] = useState({})
+  const [inventory, setInventory] = useState([])
 
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true")
   const [currentUser, setCurrentUser] = useState({
@@ -20,6 +21,27 @@ export const AuthProvider = ({children}) => {
 
   function updateCurrentItem(item) {
     setCurrentItem(() => item)
+  }
+
+  function updateInventory(list){
+    setInventory(()=> list)
+  }
+
+  function addItem(item) {
+    setInventory([...inventory, item])
+  }
+
+  function deleteItem(id) {
+    const updatedList = inventory.filter((el) => el.id !== id)
+    return setInventory(updatedList)
+  }
+
+  function updateItem(newItem) {
+    const updated = inventory.map((el) => {
+      if (el.id === newItem.id) return newItem
+      else return el
+    })
+    setInventory(() => updated)
   }
 
   const login = (response, password)=> {
@@ -51,7 +73,7 @@ export const AuthProvider = ({children}) => {
   }
 
   return (
-    <AuthContext.Provider value={{isAuthenticated, login, logout, currentUser, updateCurrentUser, currentItem, updateCurrentItem}}>
+    <AuthContext.Provider value={{isAuthenticated, login, logout, currentUser, updateCurrentUser, currentItem, updateCurrentItem, inventory, updateInventory, addItem, updateItem, deleteItem}}>
       {children}
     </AuthContext.Provider>
   )

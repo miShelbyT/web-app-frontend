@@ -1,8 +1,9 @@
 import InventoryItem from './InventoryItem.js'
 import { useState } from 'react'
+import { useAuth } from './AuthContext'
 
 
-function Inventory({ contentRef, inventory, updateItem, deleteItem }) {
+function Inventory({ contentRef }) {
 
   const [input, setInput] = useState('')
 
@@ -10,7 +11,8 @@ function Inventory({ contentRef, inventory, updateItem, deleteItem }) {
     const query = e.target.value;
     setInput(query)
   }
-
+  
+  const { inventory } = useAuth()
   if (!inventory.length) return <>loading...</>
 
   function changeUpperCase(str) {
@@ -60,8 +62,6 @@ function Inventory({ contentRef, inventory, updateItem, deleteItem }) {
               <InventoryItem
                 key={el.id}
                 item={el}
-                updateItem={updateItem}
-                deleteItem={deleteItem}
               />
             ))
           )}

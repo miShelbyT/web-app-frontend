@@ -10,14 +10,15 @@ import Fallback from './components/Fallback'
 import EditInventoryItem from './components/EditInventoryItem'
 import AddInventoryItem from './components/AddInventoryItem'
 import { inventoryService } from './services/InventoryApi'
-import { AuthProvider } from './components/AuthContext'
+import { AuthProvider, useAuth } from './components/AuthContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
-  const [inventory, setInventory] = useState([])
   const { fetchProducts } = inventoryService
-  
+
   const [ready, setReady] = useState(false)
+
+  const {updateInventory} = useAuth()
 
 
   useEffect(() => {
@@ -34,29 +35,11 @@ function App() {
   async function getInventory() {
     const fetchInventory = await fetchProducts()
     if (fetchInventory) {
-      setInventory(fetchInventory)
+      updateInventory(fetchInventory)
     }
   }
 
-  function addItem(item) {
-    setInventory([...inventory, item])
-  }
-
-  function deleteItem(id) {
-    const updatedList = inventory.filter((el) => el.id !== id)
-    return setInventory(updatedList)
-  }
-
-  function updateItem(newItem) {
-    const updated = inventory.map((el) => {
-      if (el.id === newItem.id) return newItem
-      else return el
-    })
-    setInventory(() => updated)
-  }
-
   
-
 
   return (
     <div className="App">
@@ -71,9 +54,7 @@ function App() {
                 path="/inventory_item/edit"
                 element={
                   <ProtectedRoute>
-                  <EditInventoryItem
-                    updateItem={updateItem}
-                  />
+                  <EditInventoryItem />
                   </ProtectedRoute>
                 }
               />
@@ -81,7 +62,7 @@ function App() {
                 path="/inventory_item/new"
                 element={
                   <ProtectedRoute>
-                    <AddInventoryItem addItem={addItem} />
+                    <AddInventoryItem />
                   </ProtectedRoute>
                 }
               />
@@ -89,11 +70,7 @@ function App() {
                 path="/"
                 element={
                   <ProtectedRoute>
-                    <Home
-                      inventory={inventory}
-                      updateItem={updateItem}
-                      deleteItem={deleteItem}
-                    />
+                    <Home />
                   </ProtectedRoute>
                 }
               />

@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { inventoryService} from '../services/InventoryApi'
 import { useAuth } from './AuthContext'
 
-function AddInventoryItem({addItem}) {
+function AddInventoryItem() {
 
   const { addProduct } = inventoryService
-  const { currentUser } = useAuth()
+  const { currentUser, addItem } = useAuth()
 
   const [item, setItem] = useState(
     {

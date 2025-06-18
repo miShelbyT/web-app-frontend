@@ -3,11 +3,12 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { inventoryService } from '../services/InventoryApi';
 import { useAuth } from './AuthContext'
 
-function InventoryItem({ item, updateItem, deleteItem }) {
+function InventoryItem({ item }) {
 
   let {id, name, type, size, color, vendor, orderDate, quantity, numSold, numAvailable, purchasePrice, salesPrice, saleStatus, lastUpdatedBy, lastUpdatedDate, manager } = item;
+  const { currentUser, updateCurrentItem, updateItem, deleteItem } = useAuth();
+  
   const { updateProduct, deleteProduct } = inventoryService
-  const { currentUser, updateCurrentItem } = useAuth();
 
   async function handleSellOne(){
     if(numAvailable > 0) {

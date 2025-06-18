@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { inventoryService } from '../services/InventoryApi'
 import { useAuth } from './AuthContext'
 
-function EditInventoryItem({ updateItem }) {
-  const { currentUser, currentItem } = useAuth()
+function EditInventoryItem() {
+  const { currentUser, currentItem, updateItem } = useAuth()
   const { name, type, size, color, vendor, purchasePrice, numAvailable, quantity } = currentItem
   const { updateProduct } = inventoryService
   const navigate = useNavigate()

@@ -3,11 +3,7 @@ import { useRef } from 'react'
 
 import Inventory from './Inventory.js'
 
-function Home({
-  inventory,
-  updateItem,
-  deleteItem,
-}) {
+function Home() {
 
   const contentRef = useRef(null)
   const reactToPrintFn = useReactToPrint({ contentRef })
@@ -17,12 +13,7 @@ function Home({
       <button className="btn btn-secondary mb-3" onClick={() => reactToPrintFn()}>Print</button>
 
       <div>
-        <Inventory
-          contentRef={contentRef}
-          inventory={inventory}
-          updateItem={updateItem}
-          deleteItem={deleteItem}
-        />
+        <Inventory contentRef={contentRef} />
       </div>
     </>
   )
