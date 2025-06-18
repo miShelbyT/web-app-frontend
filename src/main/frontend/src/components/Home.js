@@ -1,5 +1,5 @@
 import { useReactToPrint } from 'react-to-print'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 import Inventory from './Inventory.js'
 import { inventoryService } from '../services/InventoryApi'
