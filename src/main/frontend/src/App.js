@@ -6,6 +6,7 @@ import Login from './components/Login'
 import CreateAccount from './components/CreateAccount'
 import Header from './components/Header'
 import Home from './components/Home'
+import Fallback from './components/Fallback'
 import EditInventoryItem from './components/EditInventoryItem'
 import AddInventoryItem from './components/AddInventoryItem'
 import { inventoryService } from './services/InventoryApi'
@@ -100,6 +101,8 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+
+              <Route path="*" element={<Fallback />}/>
             </Routes>
           </div>
         </Router>
