@@ -2,7 +2,7 @@ import { useReactToPrint } from 'react-to-print'
 import { useRef } from 'react'
 
 import Inventory from './Inventory.js'
-import { inventoryService } from './services/InventoryApi'
+import { inventoryService } from '../services/InventoryApi'
 import { useAuth } from './AuthContext'
 
 function Home() {
