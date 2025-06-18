@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Login from './components/Login'
@@ -9,37 +8,10 @@ import Home from './components/Home'
 import Fallback from './components/Fallback'
 import EditInventoryItem from './components/EditInventoryItem'
 import AddInventoryItem from './components/AddInventoryItem'
-import { inventoryService } from './services/InventoryApi'
-import { AuthProvider, useAuth } from './components/AuthContext'
+import { AuthProvider } from './components/AuthContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
-  const { fetchProducts } = inventoryService
-
-  const [ready, setReady] = useState(false)
-
-  const {updateInventory} = useAuth()
-
-
-  useEffect(() => {
-    try {
-      getInventory()
-    } catch (e) { console.log(e) }
-    // eslint-disable-next-line
-  }, [ready])
-
-  function updateReady(){
-    setReady(prev => !prev)
-  }
-
-  async function getInventory() {
-    const fetchInventory = await fetchProducts()
-    if (fetchInventory) {
-      updateInventory(fetchInventory)
-    }
-  }
-
-  
 
   return (
     <div className="App">
@@ -48,7 +20,7 @@ function App() {
           <Header />
           <div className="container mt-3">
             <Routes>
-              <Route path="/login" element={<Login updateReady={updateReady}/>} />
+              <Route path="/login" element={<Login />} />
               <Route path="/create_account" element={<CreateAccount />} />
               <Route
                 path="/inventory_item/edit"
