@@ -4,11 +4,11 @@ import { useRef } from 'react'
 import Inventory from './Inventory.js'
 
 function Home({
-  updateCurrentItem,
   inventory,
   updateItem,
   deleteItem,
 }) {
+
   const contentRef = useRef(null)
   const reactToPrintFn = useReactToPrint({ contentRef })
 
@@ -19,7 +19,6 @@ function Home({
       <div>
         <Inventory
           contentRef={contentRef}
-          updateCurrentItem={updateCurrentItem}
           inventory={inventory}
           updateItem={updateItem}
           deleteItem={deleteItem}

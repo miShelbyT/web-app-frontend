@@ -6,6 +6,8 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({children}) => {
 
+  const [currentItem, setCurrentItem] = useState({})
+
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true")
   const [currentUser, setCurrentUser] = useState({
     email: localStorage.getItem("email") || "",
@@ -13,6 +15,12 @@ export const AuthProvider = ({children}) => {
     password: localStorage.getItem("password") || "",
     isAdmin: localStorage.getItem("isAdmin") === "true" || ""
   })
+
+
+
+  function updateCurrentItem(item) {
+    setCurrentItem(() => item)
+  }
 
   const login = (response, password)=> {
     setIsAuthenticated(true)
@@ -43,7 +51,7 @@ export const AuthProvider = ({children}) => {
   }
 
   return (
-    <AuthContext.Provider value={{isAuthenticated, login, logout, currentUser, updateCurrentUser}}>
+    <AuthContext.Provider value={{isAuthenticated, login, logout, currentUser, updateCurrentUser, currentItem, updateCurrentItem}}>
       {children}
     </AuthContext.Provider>
   )

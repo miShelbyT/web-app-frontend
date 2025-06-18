@@ -2,10 +2,9 @@ import InventoryItem from './InventoryItem.js'
 import { useState } from 'react'
 
 
-function Inventory({ contentRef, updateCurrentItem, inventory, updateItem, deleteItem }) {
+function Inventory({ contentRef, inventory, updateItem, deleteItem }) {
 
   const [input, setInput] = useState('')
-
 
   function handleSearch(e) {
     const query = e.target.value;
@@ -63,7 +62,6 @@ function Inventory({ contentRef, updateCurrentItem, inventory, updateItem, delet
                 item={el}
                 updateItem={updateItem}
                 deleteItem={deleteItem}
-                updateCurrentItem={updateCurrentItem}
               />
             ))
           )}

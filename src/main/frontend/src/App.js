@@ -16,7 +16,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 function App() {
   const [inventory, setInventory] = useState([])
   const { fetchProducts } = inventoryService
-  const [currentItem, setCurrentItem] = useState({})
+  
   const [ready, setReady] = useState(false)
 
 
@@ -55,9 +55,7 @@ function App() {
     setInventory(() => updated)
   }
 
-  function updateCurrentItem(item) {
-    setCurrentItem(() => item)
-  }
+  
 
 
   return (
@@ -74,7 +72,6 @@ function App() {
                 element={
                   <ProtectedRoute>
                   <EditInventoryItem
-                    currentItem={currentItem}
                     updateItem={updateItem}
                   />
                   </ProtectedRoute>
@@ -93,7 +90,6 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Home
-                      updateCurrentItem={updateCurrentItem}
                       inventory={inventory}
                       updateItem={updateItem}
                       deleteItem={deleteItem}
